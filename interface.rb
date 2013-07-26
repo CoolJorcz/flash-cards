@@ -20,22 +20,22 @@ To play, just enter the correct term for each definition. Ready? Go!
 To exit, type 'exit'.\n
     WELCOME
 
-
     puts welcome
     
     until input == "exit"
       current_card = deck.next_card
+      wrong_count = 0
       begin
         puts "#{current_card.definition}\n"
         go = current_card.correct?(input = gets.chomp)
-        puts ""
+        puts "#{current_card.term[0...wrong_count] + "*" * (current_card.term.length - wrong_count)}" unless go
+        wrong_count += 1 unless go
         go = true if input == "exit"
         puts go if go && input != "exit"
+        puts ""
       end until go
     end
   end
-
-
 end
 Interface.new
 # test = Interface.new

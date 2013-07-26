@@ -10,7 +10,7 @@ class LoaderWriter
     open_file = File.open(file)
 
     while(line = open_file.gets) do 
-      array_of_lines << line.chomp
+      array_of_lines << line.chomp #unless line.chomp.empty?
     end 
 
     open_file.close
@@ -24,26 +24,7 @@ class LoaderWriter
 
   def write(deck)
     File.open(file, "wb") do |write_file|
-      deck.each do |card|
-        write_file << "#{card.definition}\n"
-        write_file << "#{card.term}\n"
-        write_file << "\n"
-        # write_file << "#{key}\n"
-        # write_file << "#{value}\n"
-        # write_file << "\n"
-      end
+      deck.each { |card| write_file << "#{card.definition}\n#{card.term}\n\n" }
     end
   end
-end
-
-
-
-if $0 == __FILE__
-
-  testwriter = LoaderWriter.new
-
-  reader = LoaderWriter.new("flashcard_samples.txt")
-# deck = Deck.new(reader)
-# puts reader.read.inspect
-
 end

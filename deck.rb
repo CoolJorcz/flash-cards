@@ -4,17 +4,18 @@ class Deck
   attr_accessor :position, :array_of_card
 
   def initialize(attribute)
+    self.array_of_card = []
     create_a_deck(attribute)
     shuffle
     self.position = -1
   end
 
   def create_a_deck(attribute)
-    self.array_of_card =[]
-    attribute.each do |card|
-      self.array_of_card << Card.new(card)
-    end
-    array_of_card
+    attribute.each { |card| add_card(card) }
+  end
+
+  def add_card(card)
+    self.array_of_card << Card.new(card)
   end
 
   def reset_position
@@ -32,11 +33,7 @@ class Deck
   end
 
   def to_s
-    string = ""
-    array_of_card.each do |card|
-      string << "#{card.to_s}\n"
-    end
-    string
+    array_of_card.map { |card| "#{card.to_s}" }.join("\n")
   end
 end
 

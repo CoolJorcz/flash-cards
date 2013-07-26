@@ -1,5 +1,5 @@
 class Card
-  attr_accessor :definition, :term
+  attr_accessor :definition, :term, :wrong
 
   def initialize(attributes)
     self.definition = attributes[0]
@@ -12,6 +12,6 @@ class Card
   end
 
   def to_s
-    "#{term}- #{definition}"
+    "#{term} - #{definition}"
   end
 end
