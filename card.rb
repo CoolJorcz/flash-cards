@@ -1,5 +1,5 @@
 class Card
-  attr_reader :definition, :term
+  attr_accessor :definition, :term
 
   def initialize(attributes)
     self.definition = attributes[0]
