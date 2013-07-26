@@ -36,5 +36,14 @@ class LoaderWriter
   end
 end
 
-reader = LoaderWriter.new("flashcard_samples.txt")
-puts reader.read.inspect
+
+
+if $0 == __FILE__
+
+  testwriter = LoaderWriter.new
+
+  reader = LoaderWriter.new("flashcard_samples.txt")
+# deck = Deck.new(reader)
+# puts reader.read.inspect
+
+end
