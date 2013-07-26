@@ -13,6 +13,7 @@ class Interface
 
   def run
     input = nil
+    go = true
     welcome = <<-WELCOME
 Welcome to Ruby Flash Cards.
 To play, just enter the correct term for each definition. Ready? Go!
@@ -24,11 +25,13 @@ To exit, type 'exit'.\n
     
     until input == "exit"
       current_card = deck.next_card
-      puts "#{current_card.definition}\n"
-      input = gets.chomp
-      unless input == "exit"
-        puts "#{current_card.term}\n\n"
-      end
+      begin
+        puts "#{current_card.definition}\n"
+        go = current_card.correct?(input = gets.chomp)
+        puts ""
+        go = true if input == "exit"
+        puts go if go && input != "exit"
+      end until go
     end
   end
 

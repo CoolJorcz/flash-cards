@@ -5,6 +5,7 @@ class Deck
 
   def initialize(attribute)
     create_a_deck(attribute)
+    shuffle
     self.position = -1
   end
 
@@ -21,7 +22,7 @@ class Deck
   end
 
   def shuffle
-    array_of_card.shuffle
+    array_of_card.shuffle!
   end
 
   def next_card

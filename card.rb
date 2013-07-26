@@ -6,6 +6,11 @@ class Card
     self.term = attributes[1]
   end
 
+  def correct?(guess)
+    return "Correct Answer!\n\n" if guess == self.term
+    false
+  end
+
   def to_s
     "#{term}- #{definition}"
   end
