@@ -23,10 +23,10 @@ To exit, type 'exit'.\n
     puts welcome
     
     until input == "exit"
-      unless input == 'exit'
-        current_card = deck.next_card
-        puts "#{current_card.definition}\n"
-        input = gets.chomp
+      current_card = deck.next_card
+      puts "#{current_card.definition}\n"
+      input = gets.chomp
+      unless input == "exit"
         puts "#{current_card.term}\n\n"
       end
     end
